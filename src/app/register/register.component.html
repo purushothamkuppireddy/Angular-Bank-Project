@@ -1,0 +1,141 @@
+<!-- <p>
+  register works!
+</p> -->
+<!-- <div class="jumbotron"style="text-center;background-color: rgb(128, 154, 202)">
+  <div class="container text-center"  >
+    First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" [(ngModel)]="firstName" required><br><br>
+    Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" [(ngModel)]="lastName" required><br><br>
+    Mobile Number:<input type="text" [(ngModel)]="mobileNumber" required><br><br>
+    Adhaar Number:&nbsp;&nbsp;<input type="text" [(ngModel)]="aadharNumber" required ><br><br>
+    PANCard Number:<input type="text"[(ngModel)]="panCardNumber" required ><br><br>
+    Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" [(ngModel)]="address" required><br><br>
+    &nbsp;&nbsp;<button (click)="registrationDetails()">Register</button>
+ 
+  </div> -->
+
+
+<!-- <div class="container">
+<div  class="form-group">
+  <label >FirstName:</label>
+  <input type="text" class="form-control" [(ngModel)]="firstName" required placeholder="Enter your FirstName">
+</div>
+<div class="form-group">
+  <label>LastName:</label>
+  <input type="text" class="form-control"  [(ngModel)]="lastName" required placeholder="Enter your FirstName">
+</div>
+<div class="form-group">
+  <label>Email:</label>
+  <input type="text" class="form-control" [(ngModel)]="email" required placeholder="Enter your Email Address">
+</div>
+<div class="form-group">
+  <label >Mobile:</label>
+  <input type="text" class="form-control" [(ngModel)]="mobileNumber" required  placeholder="Enter your mobile number">
+</div>
+<div class="form-group">
+  <label >Aadhar Number:</label>
+  <input type="text" class="form-control" [(ngModel)]="aadharNumber" required placeholder="Enter your Aadhar number">
+</div>
+<div class="form-group">
+  <label >Permanent Address:</label>
+  <input type="text" class="form-control"  placeholder="Enter your Address">
+</div>
+<button class="btn btn-success" (click)="registrationDetails()">Register</button>
+</div> -->
+
+
+
+<!-- USING REACTIVE FORMS -->
+<h1 style="text-align: center;color: darkgreen;font-family: 'Lucida Sans'">REGISTRATION FORM</h1>
+<div class="container" >
+  <div class="jumbotron">
+    <form name="form" [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()">
+      <!-- <div class="form-group">
+        <label>Account Number:</label>
+        <input type="text" class="form-control" name="accno"formControlName="accountNo"
+          [ngClass]="{'is-invalid':registerForm.get('accountNo').touched  && registerForm.get('accountNumber').invalid}">
+        <div class="invalid-feedback">
+          <div>AccountNo. is required</div>
+        </div>
+      </div> -->
+      <div class="form-group">
+        <label>FirstName:</label>
+        <input type="text" class="form-control" name="fname"formControlName="firstName"
+          [ngClass]="{'is-invalid':registerForm.get('firstName').touched  && registerForm.get('firstName').invalid}">
+        <div class="invalid-feedback">
+          <div>FirstName is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>LastName:</label>
+        <input type="text" class="form-control" name="lname" formControlName="lastName"
+          [ngClass]="{'is-invalid':registerForm.get('lastName').touched && registerForm.get('lastName').invalid}" />
+        <div class="invalid-feedback">
+          <div>lastName is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="text" class="form-control" name="email"formControlName="emailId"
+          [ngClass]="{'is-invalid':registerForm.get('emailId').touched && registerForm.get('emailId').invalid}">
+        <div *ngIf="registerForm.get('emailId').touched && registerForm.get('emailId').invalid" class="invalid-feedback">
+          <div *ngIf="registerForm.get('emailId').errors.required ">email is required</div>
+          <div *ngIf="registerForm.get('emailId').errors.email">email is invalid</div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" class="form-control" name="pass"formControlName="password"
+          [ngClass]="{'is-invalid':registerForm.get('password').touched && registerForm.get('password').invalid}">
+        <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid"
+          class="invalid-feedback">
+          <div *ngIf="registerForm.get('password').errors.required">password is required</div>
+          <div *ngIf="registerForm.get('password').errors.minlength">minimum 6 length is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Aadhar Number:</label>
+        <input type="text" class="form-control" name="adhar"formControlName="aadharNo"
+          [ngClass]="{'is-invalid':registerForm.get('aadharNo').touched && registerForm.get('aadharNo').invalid}">
+        <div *ngIf="registerForm.get('aadharNo').touched && registerForm.get('aadharNo').invalid"
+          class="invalid-feedback">
+          <div *ngIf="registerForm.get('aadharNo').errors.required">Aadhar No. is required</div>
+          <div *ngIf="registerForm.get('aadharNo').errors.minlength">minimum 12 length is required</div>
+          <div *ngIf="registerForm.get('aadharNo').errors.pattern">Aadhar should contain only numbers</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>PanCard:</label>
+        <input type="text" class="form-control" name="pancard"formControlName="pancardNo"
+          [ngClass]="{'is-invalid':registerForm.get('pancardNo').touched  && registerForm.get('pancardNo').invalid}">
+        <div class="invalid-feedback">
+          <div>PanCard no. is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Address:</label>
+        <input type="text" class="form-control" name="address"formControlName="address"
+          [ngClass]="{'is-invalid':registerForm.get('address').touched  && registerForm.get('address').invalid}">
+        <div class="invalid-feedback">
+          <div>address is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Mobile:</label>
+        <input type="text" class="form-control" name="mobile"formControlName="mobileNo"
+          [ngClass]="{'is-invalid':registerForm.get('mobileNo').touched  && registerForm.get('mobileNo').invalid}">
+        <div class="invalid-feedback">
+          <div>mobile is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Balance">Balance</label>
+        <input type="text" class="form-control"  class="form-control"name="bal" formControlName="balance" placeholder="Enter the balance"
+        [ngClass]="{'is-invalid':registerForm.get('balance').touched && registerForm.get('balance').invalid}" >
+    </div>
+
+      <button  class="btn btn-success" name="registerButton"[disabled]=!registerForm.valid>Register</button>
+      &nbsp;&nbsp; <button type="reset" name="resetButton" class="btn btn-warning">Clear</button>
+    </form>
+  </div>
+</div>

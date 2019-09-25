@@ -1,0 +1,8 @@
+
+<form #WithdrawForm="ngForm" (ngSubmit)="withdraw(WithdrawForm.value)">
+  <div class="form-group">
+    <label>Withdraw Amount:</label>
+    <input type="text" class="form-control" name="WAmt" ngModel placeholder="Enter the amount to withdraw">
+  </div>
+  <input type="submit" class="btn btn-success" value="Withdraw">
+</form>

@@ -1,0 +1,7 @@
+<form #depositForm="ngForm" (ngSubmit)="deposit(depositForm.value)">
+  <div class="form-group">
+    <label>Deposit Amount:</label>
+    <input type="text" class="form-control" name="DAmt" ngModel placeholder="Enter the amount to deposit">
+  </div>
+  <input type="submit" class="btn btn-success" value="Deposit">
+</form>
